@@ -5,7 +5,7 @@ import com.example.produto.services.ProdutoService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/produtos")
+@RequestMapping("/api")
 class ProdutoController(private val produtoService: ProdutoService) {
 
     @GetMapping

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/pedidos")
+@RequestMapping("/api")
 class PedidoController(private val pedidoService: PedidoService) {
 
 
