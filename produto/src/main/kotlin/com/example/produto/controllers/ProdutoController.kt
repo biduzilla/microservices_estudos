@@ -13,6 +13,11 @@ class ProdutoController(private val produtoService: ProdutoService) {
         return produtoService.findAll()
     }
 
+    @GetMapping("/ok")
+    fun ok(): String {
+        return "OK!"
+    }
+
     @PostMapping
     fun save(@RequestBody produto: Produto): Produto {
         return produtoService.save(produto)
