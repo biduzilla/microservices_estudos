@@ -1,37 +1,11 @@
-spring:
-  application:
-    name: gatewayServer
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lowerCaseServiceId: true
-      routes:
-        - id: pedido-service
-          uri: lb://pedido
-          predicates:
-            - Path=/pedido/**
-          filters:
-            - RewritePath=/pedido/(?<segment>.*), /${segment}
-        - id: produto-service
-          uri: lb://produto
-          predicates:
-            - Path=/produto/**
-          filters:
-            - RewritePath=/produto/(?<segment>.*), /${segment}
-  config:
-    import: optional:configserver:http://localhost:8071
+server:
+  port: 8072
 
 eureka:
-  client:
-    fetchRegistry: true
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://localhost:8070/eureka/
   instance:
     preferIpAddress: true
-    instance-id: ${spring.application.name}:${server.port}
-
-server:
-  port: 8080
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: "http://localhost:8070/eureka/"
